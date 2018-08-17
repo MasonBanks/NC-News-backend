@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const { formatUserData, formatTopicData, formatArticleData, formatCommentData } = require('../utils')
+const { formatUserData, formatCommentData, formatTopicData, formatArticleData } = require('../utils');
 const { User, Article, Comment, Topic } = require('../models/index');
 
-const seedDB = ({ userData, topicData, articleData, commentData }) => {
+const seedDB = ({ userData, commentData, topicData, articleData }) => {
   return mongoose.connection.dropDatabase()
     .then(() => {
       return Promise.all([
@@ -18,8 +18,7 @@ const seedDB = ({ userData, topicData, articleData, commentData }) => {
     })
     .then(([articleDocs, userDocs, topicDocs]) => {
       return Promise.all([
-        Comment.insertMany(formatCommentData(commentData, articleDocs, userDocs)),
-        articleDocs, topicDocs, userDocs
+        Comment.insertMany(formatCommentData(commentData, articleDocs, userDocs)), articleDocs, topicDocs, userDocs
       ])
     })
     .then(docs => {
@@ -27,4 +26,4 @@ const seedDB = ({ userData, topicData, articleData, commentData }) => {
     })
 }
 
-module.exports = seedDB;
+module.exports = seedDB

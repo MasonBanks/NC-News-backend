@@ -1,14 +1,9 @@
-const userData = require('../seed/devData/users');
-const topicData = require('../seed/devData/topics');
-const articleData = require('../seed/devData/articles');
-const commentData = require('../seed/devData/comments');
-
 exports.formatUserData = (userData) => {
-  return userData.map((user) => {
+  return userData.map((userDatum) => {
     return {
-      username: user.username,
-      name: user.name,
-      avatar_url: user.avatar_url
+      username: userDatum.username,
+      name: userDatum.name,
+      avatar_url: userDatum.avatar_url
     }
   })
 }
@@ -40,9 +35,9 @@ exports.formatCommentData = (commentData, articleDocs, userDocs) => {
       body: comment.body,
       votes: comment.votes,
       created_at: comment.created_at,
-      belongs_to: articleDocs.find((article) => {
-        return article.title === comment.belongs_to
-      })._id,
+      belongs_to: articleDocs.find(article =>
+        comment.belongs_to === article.title
+      )._id,
       created_by: userDocs.find((user) => {
         return user.username === comment.created_by
       })._id

@@ -12,4 +12,16 @@ mongoose.connect(DB_URL, { useNewUrlParser: true })
 
 app.use('/api', apiRouter)
 
+app.use('/*', (req, res, next) => {
+  next({ status: 404, msg: 'Route not found' })
+});
+
+app.use((err, req, res, next) => {
+  if (err.name === 'CastError' || err.name === 'ValidationError') {
+    err.status = 400;
+    err.msg = err.message;
+  }
+  res.status(err.status || 500).send({ msg: err.msg || "Internal server error!" })
+})
+
 module.exports = app;

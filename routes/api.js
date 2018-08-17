@@ -1,17 +1,12 @@
 const router = require('express').Router();
-const topicsRouter = require('./topics.js');
 const articlesRouter = require('./articles.js');
-// const commentsRouter = require('./comments.js');
-// const usersRouter = require('./users.js')
-// const { getHomepage } = require('../controllers/api.js')
+const topicsRouter = require('./topics.js');
+const commentsRouter = require('./comments.js');
+const userRouter = require('./users.js');
 
-
-// router.route('/')
-//   .get(getHomepage)
-
-router.use('/topics', topicsRouter);
-router.use('/articles', articlesRouter);
-// router.use('/comments', commentsRouter);
-// router.use('/users', usersRouter);
+router.use('/articles', articlesRouter)
+router.use('/topics', topicsRouter)
+router.use('/comments', commentsRouter)
+router.use('/users', userRouter)
 
 module.exports = router;
