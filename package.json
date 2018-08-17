@@ -5,8 +5,8 @@
   "main": "listen.js",
   "scripts": {
     "test": "mocha ./spec",
-    "start": "node /listen.js",
-    "dev": "nodemon /listen.js",
+    "start": "node listen.js",
+    "dev": "nodemon listen.js",
     "seed": "node seed/seed.test.js",
     "production": "NODE_ENV=production node seed/seed.test.js"
   },
