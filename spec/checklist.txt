@@ -1,7 +1,7 @@
 # NCNews backend checklist
 - [ ] README clear and instructions accurate
-- [ ] Needs instructions to seed database
-- [ ] Package.json includes dependencies (mocha in particular) organised into dev and not dev
+- [X] Needs instructions to seed database
+- [X] Package.json includes dependencies (mocha in particular) organised into dev and not dev
 - [X] Node modules and config file ignored
 - [ ] Seed function takes raw data
 - [X] Routes broken down with `Router.route`
