@@ -25,7 +25,6 @@ exports.getArticleByTopic = (req, res, next) => {
         })
     })
     .catch(err => {
-      console.log(err)
       if (err.name === 'CastError') next({ status: 400, msg: "not a valid topic" })
       else next(err)
     })
