@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require('cors')
 const apiRouter = require('./routes/api');
-const { DB_URL } = process.env || require('./config/index')
+const DB_URL = process.env.DB_URL || require('./config/index').DB_URL
 const body_parser = require('body-parser')
 
+app.use(cors())
 app.use(body_parser.json())
 
 mongoose.connect(DB_URL, { useNewUrlParser: true })
