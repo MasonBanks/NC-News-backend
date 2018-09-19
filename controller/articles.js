@@ -1,7 +1,10 @@
 const { Article, Comment } = require('../models/index');
 
 exports.getArticles = (req, res, next) => {
-  return Article.find().lean()
+  return Article
+    .find()
+    .populate('created_by')
+    .lean()
     .then(articles => {
       return Promise.all(
         articles.map(article => {
