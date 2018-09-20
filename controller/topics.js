@@ -1,7 +1,9 @@
 const { Topic, Article, Comment } = require('../models/index');
 
 exports.getTopics = (req, res, next) => {
-  return Topic.find()
+  return Topic
+    .find()
+    .populate('title')
     .then(topics => {
       res.status(200).send({ topics })
     })
