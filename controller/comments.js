@@ -22,7 +22,9 @@ exports.deleteComment = (req, res, next) => {
     })
 }
 exports.getAllComments = (req, res, next) => {
-  return Comment.find()
+  return Comment
+    .find()
+    .populate('created_by')
     .then(comments => {
       res.status(200).send({ comments })
     })
