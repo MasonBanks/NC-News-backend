@@ -27,6 +27,7 @@ exports.getArticles = (req, res, next) => {
 }
 exports.getCommentsFromArticle = (req, res, next) => {
   return Comment.find({ belongs_to: req.params.article_id })
+    .populate('created_by')
     .then(comments => {
       res.send({ comments })
     })
