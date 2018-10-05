@@ -8,7 +8,9 @@ exports.getTopics = (req, res, next) => {
     })
 }
 exports.getArticleByTopic = (req, res, next) => {
-  return Article.find({ belongs_to: req.params.topic_slug }).lean()
+  return Article.find({ belongs_to: req.params.topic_slug })
+    .populate('created_by')
+    .lean()
     .then(articles => {
       return Promise.all(
         articles.map(article => {
