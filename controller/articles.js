@@ -63,7 +63,9 @@ exports.updateVote = (req, res, next) => {
   }
 };
 exports.getArticleByID = (req, res, next) => {
-  return Article.findOne({ _id: req.params.article_id })
+  return Article
+    .findOne({ _id: req.params.article_id })
+    .populate('created_by')
     .then(article => {
       res.send({ article })
     })
