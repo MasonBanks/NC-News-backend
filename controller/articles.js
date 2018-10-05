@@ -41,6 +41,8 @@ exports.addCommentToArticle = (req, res, next) => {
     belongs_to: req.params.article_id,
     created_by: req.body.created_by
   })
+    .then(comment => Comment.find({ _id: comment._id }))
+    .populate('created_by')
     .then(comment => {
       res.status(201).send({ comment })
     })
