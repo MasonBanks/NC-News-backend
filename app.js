@@ -14,7 +14,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true })
 
 app.use('/api', apiRouter)
 
-app.use('/*', (req, res, next) => {
+app.use('/*', (err, req, res, next) => {
   next({ status: 404, msg: 'Route not found' })
 });
 
