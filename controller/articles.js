@@ -74,6 +74,5 @@ exports.getArticleByID = (req, res, next) => {
     .then(article => {
       res.send({ article })
     })
-    .catch(err => next(err)
-    )
+    .catch(err => next(err))
 }
