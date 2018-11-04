@@ -43,7 +43,7 @@ In order to view the data, using your browser of choice, type into the address b
 http://localhost:9090/api/articles/
 
 
-##### **If you wish to view this on an online hosted server, you can navigate to:
+##### * If you wish to view this on an online hosted server, you can navigate to:
 https://mason-nc-news.herokuapp.com/api/articles
 
 You can then replace `/articles` in the URL with the following routes:
